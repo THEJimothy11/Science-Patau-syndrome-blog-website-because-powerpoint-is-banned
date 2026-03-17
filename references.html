@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>References // Our Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0f0f0f; --surface: #181818; --surface2: #222; --border: #2e2e2e;
+      --text: #e8e4de; --muted: #777; --muted2: #444; --accent: #c4a4d4;
+      --tag1: #e07a5f; --tag2: #81b29a; --tag3: #f4a261; --tag4: #6b9ac4; --tag5: #c4a4d4;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Source Serif 4', Georgia, serif; line-height: 1.75; }
+
+    .site-nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-brand { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-brand span { color: #e07a5f; }
+    .nav-links { display: flex; }
+    .nav-links a { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 0.9rem; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); border-bottom-color: var(--tag5); }
+
+    .page { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.5rem 6rem; }
+
+    .post-tag { display: inline-block; font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-bottom: 1.2rem; background: rgba(196,164,212,0.12); color: var(--tag5); }
+    .post-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; line-height: 1.1; color: var(--text); margin-bottom: 1rem; }
+    .post-meta { font-family: 'DM Mono', monospace; font-size: 0.73rem; color: var(--muted2); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .post-meta span { margin-right: 1.2rem; }
+
+    .ref-intro { color: #888; font-size: 0.95rem; line-height: 1.7; margin-bottom: 2.5rem; max-width: 580px; }
+    .ref-intro a { color: var(--tag5); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* REQUIREMENTS BOX */
+    .req-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.3rem 1.5rem; margin-bottom: 2.5rem; }
+    .req-box h3 { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); margin-bottom: 1rem; }
+    .req-list { list-style: none; margin: 0; padding: 0; }
+    .req-list li { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); padding: 0.4rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.8rem; align-items: baseline; }
+    .req-list li:last-child { border-bottom: none; }
+    .req-list .check { color: var(--tag2); font-size: 0.7rem; flex-shrink: 0; }
+    .req-list .pending { color: #444; font-size: 0.7rem; flex-shrink: 0; }
+
+    /* CITATION LIST */
+    .cite-section-label { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); padding: 2rem 0 0.6rem; margin-top: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+    .cite-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .citation { padding: 1.3rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; }
+    .citation:last-child { border-bottom: none; }
+    .cite-num { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--muted2); line-height: 1; padding-top: 0.2rem; min-width: 28px; }
+    .cite-body { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #888; line-height: 1.7; }
+    .cite-body .cite-type { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1px 7px; border-radius: 3px; margin-bottom: 0.4rem; vertical-align: middle; margin-left: 0.4rem; }
+    .non-web { background: rgba(129,178,154,0.1); color: var(--tag2); }
+    .web { background: rgba(107,154,196,0.1); color: var(--tag4); }
+
+    .todo { background: #1a1600; border: 1px dashed #554400; border-radius: 6px; padding: 0.7rem 1rem; margin: 0.5rem 0; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #aa8800; line-height: 1.5; }
+    .todo::before { content: "// TODO: "; opacity: 0.55; }
+
+    .tip-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; margin-top: 2.5rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+    .tip-box strong { color: var(--muted2); font-weight: 600; display: block; margin-bottom: 0.5rem; }
+    .tip-box a { color: var(--tag5); text-decoration: none; }
+
+    .post-nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .post-nav a { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .post-nav a:hover { color: var(--text); }
+
+    .site-footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.74rem; color: var(--muted2); margin-top: 4rem; }
+    .site-footer a { color: var(--muted); text-decoration: none; }
+
+    @media (max-width: 600px) { .nav-links a { padding: 0 0.5rem; font-size: 0.65rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Our Journey <span>//</span> Patau Syndrome</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="doctors-report.html">Doctor</a>
+      <a href="genetic-counselor.html">Genetics</a>
+      <a href="parents-journal.html">Journal</a>
+      <a href="community-resources.html">Resources</a>
+      <a href="references.html" class="active">Refs</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <span class="post-tag">Works Cited</span>
+  <h1 class="post-title">Sources &amp; References</h1>
+  <div class="post-meta">
+    <span>APA Format</span>
+    <span>5+ sources required</span>
+    <span>At least 1 non-website source</span>
+  </div>
+
+  <p class="ref-intro">
+    All sources below are cited in APA format. At minimum, five reputable sources are required, and at least one must be a non-website source — a peer-reviewed journal article, textbook, or book. Use <a href="https://www.easybib.com" target="_blank">EasyBib</a> or <a href="https://www.citationmachine.net" target="_blank">CitationMachine</a> to format your citations.
+  </p>
+
+  <!-- REQUIREMENTS TRACKER -->
+  <div class="req-box">
+    <h3>Citation Checklist</h3>
+    <ul class="req-list">
+      <li><span class="pending">○</span> At least 5 total sources</li>
+      <li><span class="pending">○</span> At least 1 source is non-website (journal, book, or peer-reviewed article)</li>
+      <li><span class="pending">○</span> All sources cited in APA or MLA format</li>
+      <li><span class="pending">○</span> No source is a general encyclopedia (Wikipedia, etc.) as a primary source</li>
+      <li><span class="pending">○</span> Sources are reputable (government, hospital, peer-reviewed, or professional organization)</li>
+    </ul>
+  </div>
+
+  <!-- NON-WEBSITE SOURCE -->
+  <div class="cite-section-label">Non-Website Source (Required)</div>
+
+  <div class="citation">
+    <div class="cite-num">01</div>
+    <div class="cite-body">
+      <span class="cite-type non-web">Journal Article</span><br>
+      [Author Last, First I.] ([Year]). [Title of article]. <em>[Journal Name]</em>, <em>[Volume]</em>([Issue]), [Page range]. https://doi.org/[DOI]
+      <div class="todo">Replace with a real peer-reviewed journal article. Search PubMed (pubmed.ncbi.nlm.nih.gov) for "Patau Syndrome" or "Trisomy 13." The American Journal of Medical Genetics, Genetics in Medicine, and European Journal of Medical Genetics are all strong options.</div>
+    </div>
+  </div>
+
+  <!-- WEBSITE SOURCES -->
+  <div class="cite-section-label">Website Sources</div>
+
+  <div class="citation">
+    <div class="cite-num">02</div>
+    <div class="cite-body">
+      <span class="cite-type web">Website</span><br>
+      [Organization or Author]. ([Year, Month Day]). [Page title]. [Website Name]. Retrieved [Month Day, Year], from [Full URL]
+      <div class="todo">Recommended: MedlinePlus (medlineplus.gov/genetics), NIH, or CDC. These are authoritative government medical sources.</div>
+    </div>
+  </div>
+
+  <div class="citation">
+    <div class="cite-num">03</div>
+    <div class="cite-body">
+      <span class="cite-type web">Website</span><br>
+      [Organization or Author]. ([Year]). [Page title]. [Website Name]. Retrieved from [Full URL]
+      <div class="todo">Try the SOFT organization (trisomy.org) or NORD (rarediseases.org) — both have detailed, reviewed pages on Patau Syndrome.</div>
+    </div>
+  </div>
+
+  <div class="citation">
+    <div class="cite-num">04</div>
+    <div class="cite-body">
+      <span class="cite-type web">Website</span><br>
+      [Organization or Author]. ([Year]). [Page title]. [Website Name]. Retrieved from [Full URL]
+      <div class="todo">Consider a children's hospital genetics page — Cincinnati Children's (cincinnatichildrens.org), Children's Hospital of Philadelphia (chop.edu), or a similar institution.</div>
+    </div>
+  </div>
+
+  <div class="citation">
+    <div class="cite-num">05</div>
+    <div class="cite-body">
+      <span class="cite-type web">Website</span><br>
+      [Organization or Author]. ([Year]). [Page title]. [Website Name]. Retrieved from [Full URL]
+      <div class="todo">Your fifth source can be from a community resource (e.g., March of Dimes, Trisomy 13 Support Foundation) or an additional medical reference.</div>
+    </div>
+  </div>
+
+  <!-- OPTIONAL ADDITIONAL SOURCES -->
+  <div class="cite-section-label">Additional Sources (Optional)</div>
+
+  <div class="citation" style="opacity:0.5;">
+    <div class="cite-num">06</div>
+    <div class="cite-body">
+      [Add if you have more than 5 sources — more sources = stronger research grade]
+    </div>
+  </div>
+
+  <!-- TIP BOX -->
+  <div class="tip-box">
+    <strong>Citation formatting tools</strong>
+    <a href="https://www.easybib.com" target="_blank">EasyBib.com</a> &nbsp;·&nbsp;
+    <a href="https://www.citationmachine.net" target="_blank">CitationMachine.net</a> &nbsp;·&nbsp;
+    <a href="https://www.zotero.org" target="_blank">Zotero.org</a> (free desktop app)<br><br>
+    For journal articles, search <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed.gov</a> — it's free, government-run, and has thousands of peer-reviewed medical articles. Search "Trisomy 13" or "Patau Syndrome."<br><br>
+    APA format for a website: Author/Org. (Year, Month Day). Title. Website. URL<br>
+    APA format for a journal: Author, A. (Year). Article title. <em>Journal</em>, Vol(Issue), pages. DOI
+  </div>
+
+  <div class="post-nav">
+    <a href="community-resources.html">← Community Resources</a>
+    <a href="index.html">Back to Home →</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  Our Journey // Patau Syndrome &nbsp;&middot;&nbsp; <a href="index.html">Home</a>
+</footer>
+
+</body>
+</html>

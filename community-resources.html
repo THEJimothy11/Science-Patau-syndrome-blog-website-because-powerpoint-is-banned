@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Resources // Our Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0f0f0f; --surface: #181818; --surface2: #222; --border: #2e2e2e;
+      --text: #e8e4de; --muted: #777; --muted2: #444; --accent: #6b9ac4;
+      --tag1: #e07a5f; --tag2: #81b29a; --tag3: #f4a261; --tag4: #6b9ac4; --tag5: #c4a4d4;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Source Serif 4', Georgia, serif; line-height: 1.75; }
+
+    .site-nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-brand { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-brand span { color: #e07a5f; }
+    .nav-links { display: flex; }
+    .nav-links a { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 0.9rem; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); border-bottom-color: var(--tag4); }
+
+    .page { max-width: 960px; margin: 0 auto; padding: 3.5rem 1.5rem 6rem; }
+    .page-narrow { max-width: 720px; }
+
+    .post-tag { display: inline-block; font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-bottom: 1.2rem; background: rgba(107,154,196,0.12); color: var(--tag4); }
+    .post-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; line-height: 1.1; color: var(--text); margin-bottom: 1rem; max-width: 700px; }
+    .post-meta { font-family: 'DM Mono', monospace; font-size: 0.73rem; color: var(--muted2); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .post-meta span { margin-right: 1.2rem; }
+
+    .section-label { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); padding: 2.5rem 0 0.8rem; margin-top: 2.5rem; border-top: 1px solid var(--border); display: block; }
+    .section-label:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+
+    .intro-text { max-width: 600px; color: #999; font-size: 0.97rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    .todo { background: #1a1600; border: 1px dashed #554400; border-radius: 6px; padding: 0.7rem 1rem; margin: 0.8rem 0 1.6rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #aa8800; line-height: 1.5; }
+    .todo::before { content: "// TODO: "; opacity: 0.55; }
+
+    /* CARD GRID */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 1rem 0 2rem; }
+    .resource-card { background: var(--surface); padding: 1.3rem 1.5rem; }
+    .resource-card h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; line-height: 1.3; }
+    .resource-card p { font-size: 0.86rem; color: var(--muted); margin-bottom: 0.8rem; line-height: 1.6; }
+    .resource-card .contact { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--tag4); line-height: 1.7; word-break: break-word; }
+    .resource-card .placeholder { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #444; font-style: italic; border: 1px dashed #333; border-radius: 4px; padding: 0.5rem 0.8rem; margin-top: 0.5rem; }
+
+    .img-ph { background: var(--surface2); border: 1px dashed var(--border); border-radius: 8px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: var(--muted2); font-family: 'DM Mono', monospace; font-size: 0.7rem; text-align: center; padding: 1rem; margin: 1.5rem 0; max-width: 500px; }
+    .img-ph .icon { font-size: 2rem; opacity: 0.2; }
+    .blog-img { width: 100%; border-radius: 8px; object-fit: cover; display: block; }
+
+    .post-nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .post-nav a { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .post-nav a:hover { color: var(--text); }
+    .post-nav .next { color: var(--tag4); }
+
+    .site-footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.74rem; color: var(--muted2); margin-top: 4rem; }
+    .site-footer a { color: var(--muted); text-decoration: none; }
+
+    blockquote { border-left: 3px solid var(--tag4); padding: 0.8rem 1.2rem; margin: 1.5rem 0 2rem; background: var(--surface); border-radius: 0 6px 6px 0; max-width: 680px; }
+    blockquote p { color: #999; font-style: italic; margin: 0; font-size: 0.97rem; }
+
+    @media (max-width: 600px) {
+      .nav-links a { padding: 0 0.5rem; font-size: 0.65rem; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Our Journey <span>//</span> Patau Syndrome</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="doctors-report.html">Doctor</a>
+      <a href="genetic-counselor.html">Genetics</a>
+      <a href="parents-journal.html">Journal</a>
+      <a href="community-resources.html" class="active">Resources</a>
+      <a href="references.html">Refs</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <span class="post-tag">Part 04 — Community Resources</span>
+  <h1 class="post-title">Finding support: local centers, national foundations, and online communities</h1>
+  <div class="post-meta">
+    <span>Resource research</span>
+    <span>[Date researched]</span>
+    <span>Local, national, and online</span>
+  </div>
+
+  <blockquote>
+    <p>One of the first things I did after the initial shock was start searching for people who'd been through this. Here's everything I found — from our city to the internet.</p>
+  </blockquote>
+
+  <div class="img-ph">
+    <span class="icon">🤝</span>
+    <span>Replace with a support group or community image — Image 6 of 6<br>
+    &lt;img src="images/support.jpg" alt="support group" class="blog-img"&gt;</span>
+  </div>
+
+  <!-- NATIONAL -->
+  <span class="section-label">National Organizations</span>
+  <p class="intro-text">These organizations work specifically with Trisomy 13 and related conditions at the national level. They offer family support, research funding, educational materials, and connections to specialists.</p>
+
+  <div class="card-grid">
+    <div class="resource-card">
+      <h4>SOFT — Support Organization for Trisomy 18, 13 and Related Disorders</h4>
+      <p>The primary national nonprofit for families of children with Trisomy 13 and 18. Runs an annual conference, regional chapter network, and provides care guidelines for medical teams.</p>
+      <div class="contact">trisomy.org<br>1-800-716-SOFT (7638)<br>barbsoft@aol.com</div>
+    </div>
+    <div class="resource-card">
+      <h4>Trisomy 13 Support Foundation</h4>
+      <p>Dedicated specifically to Trisomy 13 families. Offers family support networks, medical referrals, and educational resources for parents navigating a new diagnosis.</p>
+      <div class="contact">trisomy13support.org<br>[Verify current contact info on website]</div>
+    </div>
+    <div class="resource-card">
+      <h4>National Organization for Rare Disorders (NORD)</h4>
+      <p>Provides patient assistance grants, a free rare disease registry, and advocacy support for individuals with conditions including Patau Syndrome.</p>
+      <div class="contact">rarediseases.org<br>(203) 744-0100</div>
+    </div>
+    <div class="resource-card">
+      <h4>March of Dimes</h4>
+      <p>Funds research into birth defects and chromosomal conditions. Offers NICU family support programs and grief/loss resources at many participating hospitals.</p>
+      <div class="contact">marchofdimes.org<br>1-888-663-4637</div>
+    </div>
+  </div>
+
+  <!-- LOCAL TREATMENT -->
+  <span class="section-label">Local Treatment Centers</span>
+  <p class="intro-text">Children with Patau Syndrome need access to a Level III or IV NICU, pediatric cardiology, neurology, genetics, and ophthalmology. Here's what we found near us.</p>
+
+  <div class="todo">Research and name specific hospitals near YOUR city. Look up their NICU level rating, pediatric cardiology program, and genetics clinic. Add real addresses, phone numbers, and websites. If local options are limited, name the nearest suitable facility and note travel distance.</div>
+
+  <div class="card-grid">
+    <div class="resource-card">
+      <h4>[LOCAL CHILDREN'S HOSPITAL NAME]</h4>
+      <p>[Describe this hospital's NICU level, pediatric specialties, and why it is relevant for Patau Syndrome care.]</p>
+      <div class="placeholder">[Add: Address, Phone, Website]</div>
+    </div>
+    <div class="resource-card">
+      <h4>[PEDIATRIC CARDIOLOGY / HEART CENTER]</h4>
+      <p>[Describe the cardiac surgery center your child's heart defect would require. This may be at a separate facility or a regional children's hospital.]</p>
+      <div class="placeholder">[Add: Address, Phone, Website]</div>
+    </div>
+    <div class="resource-card">
+      <h4>[GENETICS CLINIC / DEVELOPMENTAL PEDIATRICS]</h4>
+      <p>[Name the genetics clinic where follow-up testing and counseling would happen. Many major hospitals have one.]</p>
+      <div class="placeholder">[Add: Address, Phone, Website]</div>
+    </div>
+  </div>
+
+  <!-- LOCAL SUPPORT GROUPS -->
+  <span class="section-label">Local Support Groups</span>
+  <p class="intro-text">Connecting with other parents who've been through this matters. Here's what we found locally — and online if local options are limited.</p>
+
+  <div class="todo">Search "[your city] Trisomy 13 support group" or "[your city] rare chromosome parent support." If nothing exists locally, note that clearly, then link to online options below. Contact information is required for all groups.</div>
+
+  <div class="card-grid">
+    <div class="resource-card">
+      <h4>[LOCAL SUPPORT GROUP NAME — or note if none exists locally]</h4>
+      <p>[Describe the group: when and where they meet, what they offer emotionally and practically, who facilitates it. If no local group exists, explain that here.]</p>
+      <div class="placeholder">[Add: Contact name, phone or email, meeting location]</div>
+    </div>
+  </div>
+
+  <!-- SCHOOLS & PROGRAMS -->
+  <span class="section-label">Special Schools &amp; Early Intervention Programs</span>
+  <p class="intro-text">Under federal law, children with disabilities qualify for free services from birth. Here's what's available for our child.</p>
+
+  <div class="card-grid">
+    <div class="resource-card">
+      <h4>Early Intervention — Birth to Age 3 (Federal, all states)</h4>
+      <p>Under IDEA (Individuals with Disabilities Education Act), every child with a diagnosed disability from birth to age 3 qualifies for free early intervention services: physical therapy, occupational therapy, speech-language therapy, and developmental support.</p>
+      <div class="contact">[ADD YOUR STATE'S EARLY INTERVENTION CONTACT]<br>e.g. Nevada Early Intervention Services (NEIS)<br>[Phone + Website]</div>
+    </div>
+    <div class="resource-card">
+      <h4>[LOCAL SPECIAL EDUCATION SCHOOL OR PROGRAM]</h4>
+      <p>[Name a specific special education school or program in your area. What disabilities do they serve? What therapies or supports do they provide? What ages?]</p>
+      <div class="placeholder">[Add: Address, Phone, Website]</div>
+    </div>
+    <div class="resource-card">
+      <h4>[SCHOOL DISTRICT SPECIAL EDUCATION DEPARTMENT]</h4>
+      <p>[Your local public school district is required to provide free special education services for qualifying children ages 3–21. Name your district's special education contact.]</p>
+      <div class="placeholder">[Add: District name, contact person, phone]</div>
+    </div>
+  </div>
+
+  <div class="todo">Research specific programs in YOUR area. Fill in your state's Early Intervention program name and contact info. Name a real special education school or program locally. Add real contact details for all three cards.</div>
+
+  <!-- FINANCIAL SUPPORT -->
+  <span class="section-label">Financial Assistance — Local &amp; National</span>
+  <p class="intro-text">Medical care for a child with Patau Syndrome is expensive. These programs can help offset costs.</p>
+
+  <div class="card-grid">
+    <div class="resource-card">
+      <h4>Medicaid / [Your State] CHIP</h4>
+      <p>Children with serious medical conditions typically qualify for Medicaid or the Children's Health Insurance Program based on disability status, regardless of household income. This can dramatically reduce out-of-pocket medical costs.</p>
+      <div class="contact">medicaid.gov<br>1-800-318-2596</div>
+    </div>
+    <div class="resource-card">
+      <h4>SSI — Supplemental Security Income</h4>
+      <p>Children with significant disabilities may qualify for monthly SSI payments through Social Security to help cover living and medical expenses.</p>
+      <div class="contact">ssa.gov<br>1-800-772-1213</div>
+    </div>
+    <div class="resource-card">
+      <h4>Ronald McDonald House Charities</h4>
+      <p>Provides free or reduced-cost housing near children's hospitals for families who must travel for treatment. Has locations in many cities nationwide.</p>
+      <div class="contact">rmhc.org<br>[Find your nearest location on their website]</div>
+    </div>
+    <div class="resource-card">
+      <h4>[LOCAL BUSINESS OR CHARITY]</h4>
+      <p>[Research a local business, church, Rotary Club, or charity in your city that supports families with seriously ill children financially or practically.]</p>
+      <div class="placeholder">[Add: Organization name, what they offer, contact info]</div>
+    </div>
+  </div>
+
+  <div class="todo">Research local businesses and charities in YOUR city that support medically complex families. Rotary Clubs, Lions Clubs, local children's charities, and hospital foundations are good places to start. Add real contact information for the local card.</div>
+
+  <!-- ONLINE SUPPORT -->
+  <span class="section-label">Online Support</span>
+  <p class="intro-text">When local options are limited, the internet fills in the gaps. These online communities are active and moderated.</p>
+
+  <div class="card-grid">
+    <div class="resource-card">
+      <h4>SOFT Private Facebook Group</h4>
+      <p>A private, moderated online community for parents and families of children with Trisomy 13 and 18. Thousands of active members worldwide sharing experiences, medical questions, and emotional support.</p>
+      <div class="contact">Search "SOFT Trisomy 13 18" on Facebook.<br>Request to join; moderator-approved.</div>
+    </div>
+    <div class="resource-card">
+      <h4>[SECOND ONLINE COMMUNITY — research and fill in]</h4>
+      <p>[Find and describe a second online community for Trisomy 13 families. What platform is it on? How many members? What kinds of support does it offer?]</p>
+      <div class="placeholder">[Add: Website or platform, how to join, contact info]</div>
+    </div>
+  </div>
+
+</main>
+
+<div style="max-width:960px;margin:0 auto;padding:0 1.5rem;">
+  <div class="post-nav">
+    <a href="parents-journal.html">← Parent's Journal</a>
+    <a href="references.html" class="next">Next: References →</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  Our Journey // Patau Syndrome &nbsp;&middot;&nbsp; <a href="index.html">Home</a>
+</footer>
+
+</body>
+</html>

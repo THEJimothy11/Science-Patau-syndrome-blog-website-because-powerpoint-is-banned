@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parent's Journal // Our Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0f0f0f; --surface: #181818; --surface2: #222; --border: #2e2e2e;
+      --text: #e8e4de; --muted: #777; --muted2: #444; --accent: #f4a261;
+      --tag1: #e07a5f; --tag2: #81b29a; --tag3: #f4a261; --tag4: #6b9ac4; --tag5: #c4a4d4;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Source Serif 4', Georgia, serif; line-height: 1.75; }
+
+    .site-nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-brand { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-brand span { color: #e07a5f; }
+    .nav-links { display: flex; }
+    .nav-links a { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 0.9rem; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); border-bottom-color: var(--tag3); }
+
+    .page { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.5rem 6rem; }
+
+    .post-tag { display: inline-block; font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-bottom: 1.2rem; background: rgba(244,162,97,0.12); color: var(--tag3); }
+    .post-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; line-height: 1.1; color: var(--text); margin-bottom: 1rem; }
+    .post-meta { font-family: 'DM Mono', monospace; font-size: 0.73rem; color: var(--muted2); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .post-meta span { margin-right: 1.2rem; }
+
+    .prose h2 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 3rem 0 1rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+    .prose h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .prose h3 { font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin: 1.8rem 0 0.7rem; }
+    .prose p { margin-bottom: 1.3rem; color: #ccc8c0; font-size: 1.02rem; }
+    .prose ul, .prose ol { margin: 0.5rem 0 1.4rem 1.3rem; color: #ccc8c0; font-size: 1.02rem; }
+    .prose li { margin-bottom: 0.5rem; }
+    .prose strong { color: var(--text); font-weight: 600; }
+
+    blockquote { border-left: 3px solid var(--tag3); padding: 0.8rem 1.2rem; margin: 2rem 0; background: var(--surface); border-radius: 0 6px 6px 0; }
+    blockquote p { color: #999 !important; font-style: italic; margin: 0 !important; }
+
+    .todo { background: #1a1600; border: 1px dashed #554400; border-radius: 6px; padding: 0.7rem 1rem; margin: 0.8rem 0 1.6rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #aa8800; line-height: 1.5; }
+    .todo::before { content: "// TODO: "; opacity: 0.55; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 1.8rem 0; }
+    .stat-cell { background: var(--surface); padding: 1.2rem 0.8rem; text-align: center; }
+    .stat-cell .num { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--tag3); display: block; margin-bottom: 0.3rem; }
+    .stat-cell .lbl { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4; }
+
+    .img-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+    .img-ph { background: var(--surface2); border: 1px dashed var(--border); border-radius: 8px; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: var(--muted2); font-family: 'DM Mono', monospace; font-size: 0.7rem; text-align: center; padding: 1rem; }
+    .img-ph .icon { font-size: 1.8rem; opacity: 0.25; }
+    .blog-img { width: 100%; border-radius: 8px; object-fit: cover; display: block; }
+    .img-caption { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted2); margin-top: 0.4rem; text-align: center; }
+
+    .post-nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .post-nav a { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .post-nav a:hover { color: var(--text); }
+    .post-nav .next { color: var(--tag3); }
+
+    .site-footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.74rem; color: var(--muted2); margin-top: 4rem; }
+    .site-footer a { color: var(--muted); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .nav-links a { padding: 0 0.5rem; font-size: 0.65rem; }
+      .img-grid2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Our Journey <span>//</span> Patau Syndrome</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="doctors-report.html">Doctor</a>
+      <a href="genetic-counselor.html">Genetics</a>
+      <a href="parents-journal.html" class="active">Journal</a>
+      <a href="community-resources.html">Resources</a>
+      <a href="references.html">Refs</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <span class="post-tag">Part 03 — Parent's Journal</span>
+  <h1 class="post-title">Processing the news: how this changes our daily life, our costs, and our family</h1>
+  <div class="post-meta">
+    <span>Personal journal entry</span>
+    <span>[Date]</span>
+    <span>Written in my own voice, as an expecting parent</span>
+  </div>
+
+  <div class="prose">
+
+    <blockquote>
+      <p>When the genetic counselor told us the news, I sat in the car for a long time before I could drive home. I didn't cry right away — I just sat there. This is my attempt to write it all out: the fear, the love, the research, and what we've decided to do about it.</p>
+    </blockquote>
+
+    <div class="img-grid2">
+      <div>
+        <div class="img-ph">
+          <span class="icon">🌱</span>
+          <span>Replace with a family or hopeful image — Image 4 of 6<br>
+          &lt;img src="images/family.jpg" ...&gt;</span>
+        </div>
+        <p class="img-caption">Our family</p>
+      </div>
+      <div>
+        <div class="img-ph">
+          <span class="icon">🏥</span>
+          <span>Replace with a children's hospital or therapy image — Image 5 of 6<br>
+          &lt;img src="images/hospital.jpg" ...&gt;</span>
+        </div>
+        <p class="img-caption">The road ahead</p>
+      </div>
+    </div>
+
+    <h2>Changes to Our Daily Routine</h2>
+    <p>
+      I won't pretend this doesn't change everything — because it does. A child with Patau Syndrome, depending on how the condition affects them, may require around-the-clock monitoring, daily therapies, and frequent specialist visits, especially in the first year of life. My spouse and I have started talking through what that actually looks like week to week.
+    </p>
+    <div class="todo">Write this section COMPLETELY IN YOUR OWN VOICE, first person. What would a typical day look like for your family? Who does night monitoring? How do work schedules shift? What appointments fill up the week? Be specific and personal.</div>
+
+    <h2>Accommodations We Need to Make</h2>
+    <p>We've started making a list of what our home and life need to look like:</p>
+    <ul>
+      <li>Medical equipment space — feeding pumps, oxygen equipment, baby monitors all need somewhere to live in our home</li>
+      <li>Work adjustments — one of us will likely need to reduce hours or go part-time, at least initially</li>
+      <li>A specialist rotation — cardiologist, neurologist, ophthalmologist, ENT, and feeding therapist means a lot of appointments to coordinate</li>
+      <li>Early intervention therapies — physical, occupational, and speech therapy typically start in the first months of life</li>
+      <li>Seizure safety — padding, monitoring, avoiding situations that could be dangerous during a seizure event</li>
+    </ul>
+    <div class="todo">Research actual accommodations for Patau Syndrome and rewrite this list in your own words. Make it personal — mention YOUR home, YOUR situation. Would you need a bigger car for medical equipment? A first-floor bedroom? Proximity to a hospital?</div>
+
+    <h2>Estimated Medical Costs</h2>
+    <p>I've been doing the research, and the financial reality is something we need to face directly. These are rough estimates — every child's situation is different — but they give us a sense of what we're planning for.</p>
+
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <span class="num">$100K+</span>
+        <span class="lbl">Avg. NICU stay, complex newborn</span>
+      </div>
+      <div class="stat-cell">
+        <span class="num">$20K–80K</span>
+        <span class="lbl">Heart surgery (varies widely)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="num">$5K–15K/yr</span>
+        <span class="lbl">Ongoing therapies &amp; specialists</span>
+      </div>
+    </div>
+
+    <p>We've been looking into Medicaid waivers for medically complex children, SSI disability income, and nonprofit grant programs. We're also checking whether our insurance plan has a NICU max-out-of-pocket.</p>
+
+    <div class="todo">Verify these numbers with real cited sources. Look up actual NICU cost data, cleft palate surgery costs, and heart surgery estimates. Describe specifically how YOU plan to handle these costs — insurance, grants, family support, government programs. These are placeholder stats only.</div>
+
+    <h2>The Emotional Weight</h2>
+    <p>
+      My spouse and I have been having a lot of conversations in the dark lately — the kind where neither of you is really ready to say what you're actually thinking. I felt grief first. Then guilt. Then love, in a way I didn't expect — fierce and protective.
+    </p>
+    <p>
+      We've talked about what this means for our relationship, for any siblings our child might have, for our parents who are already asking questions. We're considering counseling — not because we're falling apart, but because we want to handle this the right way together.
+    </p>
+    <div class="todo">Write a genuine, thoughtful personal reflection here. How do YOU feel? How does your spouse feel? Have you told other family members? How are siblings (if any) being included in this? What kind of emotional support are you seeking? This section is worth points — be honest and detailed.</div>
+
+    <h2>Will We Need to Move?</h2>
+    <p>
+      One of the first things I researched after the diagnosis was whether our city has what our child would need. The answer isn't straightforward. Pediatric cardiac surgery, a Level IV NICU, and a strong early intervention program all need to be within reach.
+    </p>
+    <div class="todo">Research what medical infrastructure exists in YOUR actual city/state. Does your area have a children's hospital with a NICU? A pediatric cardiology program? Name specific facilities you found. Would you need to travel or relocate? Be specific.</div>
+
+    <h2>How Will Our Child Be Treated?</h2>
+    <p>
+      This is the question that keeps me up more than the medical stuff. Children with Patau Syndrome who survive into childhood often look and develop differently from their peers. I think about the stares in public. The questions from other kids. Whether they'll find friends.
+    </p>
+    <p>
+      We've started thinking about what advocacy looks like from day one — at the pediatrician's office, at the school meeting, at the birthday party where a kid says something unkind.
+    </p>
+    <div class="todo">Reflect on the social and emotional experience of your child. Will they attend special education programs? How will you talk to other children about their sibling? How do you plan to advocate for your child's dignity and inclusion? Think about their perspective too, not just yours.</div>
+
+    <h2>Heredity — What This Means for Future Pregnancies</h2>
+    <p>
+      After everything we learned from the genetic counselor, we know our recurrence risk depends on which form of Trisomy 13 our child has. In most cases, the risk is low but not zero — and it goes up with maternal age.
+    </p>
+    <p>
+      We've agreed that if we have more children, we'll pursue prenatal genetic testing early. Knowing ahead of time doesn't change how much we'll love that child — but it gives us time to prepare.
+    </p>
+    <div class="todo">Personalize this section based on what you learned in the genetic counselor section. What is YOUR specific recurrence risk? How does this information affect your decisions about future pregnancies? What prenatal tests are available, and would you use them?</div>
+
+  </div>
+
+  <div class="post-nav">
+    <a href="genetic-counselor.html">← Genetic Counselor</a>
+    <a href="community-resources.html" class="next">Next: Community Resources →</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  Our Journey // Patau Syndrome &nbsp;&middot;&nbsp; <a href="index.html">Home</a>
+</footer>
+
+</body>
+</html>
