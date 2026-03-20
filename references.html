@@ -10,6 +10,7 @@
       --bg: #0f0f0f; --surface: #181818; --surface2: #222; --border: #2e2e2e;
       --text: #e8e4de; --muted: #777; --muted2: #444; --accent: #c4a4d4;
       --tag1: #e07a5f; --tag2: #81b29a; --tag3: #f4a261; --tag4: #6b9ac4; --tag5: #c4a4d4;
+      user-select: none;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -50,7 +51,7 @@
     .citation { padding: 1.3rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; }
     .citation:last-child { border-bottom: none; }
     .cite-num { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--muted2); line-height: 1; padding-top: 0.2rem; min-width: 28px; }
-    .cite-body { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #888; line-height: 1.7; }
+    .cite-body { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #888; line-height: 1.7; user-select: all;}
     .cite-body .cite-type { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1px 7px; border-radius: 3px; margin-bottom: 0.4rem; vertical-align: middle; margin-left: 0.4rem; }
     .non-web { background: rgba(129,178,154,0.1); color: var(--tag2); }
     .web { background: rgba(107,154,196,0.1); color: var(--tag4); }
@@ -120,8 +121,7 @@
     <div class="cite-num">01</div>
     <div class="cite-body">
       <span class="cite-type non-web">Journal Article</span><br>
-      [Author Last, First I.] ([Year]). [Title of article]. <em>[Journal Name]</em>, <em>[Volume]</em>([Issue]), [Page range]. https://doi.org/[DOI]
-      <div class="todo">Replace with a real peer-reviewed journal article. Search PubMed (pubmed.ncbi.nlm.nih.gov) for "Patau Syndrome" or "Trisomy 13." The American Journal of Medical Genetics, Genetics in Medicine, and European Journal of Medical Genetics are all strong options.</div>
+      Goel, Nitin, et al. “Trisomy 13 and 18—Prevalence and Mortality—a Multi‐Registry Population Based Analysis.” <em>American Journal of Medical Genetics Part A</em>, vol. 179, no. 12, 30 Sept. 2019, pp. 2382–2392, www.ncbi.nlm.nih.gov/pmc/articles/PMC6848757/, https://doi.org/10.1002/ajmg.a.61365.
     </div>
   </div>
 

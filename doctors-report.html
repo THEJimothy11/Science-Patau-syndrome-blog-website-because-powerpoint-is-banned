@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Doctor's Report // Our Journey</title>
+  <title>Doctor's Report // Trisomy 13</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg: #0f0f0f; --surface: #181818; --surface2: #222; --border: #2e2e2e;
       --text: #e8e4de; --muted: #777; --muted2: #444; --accent: #e07a5f;
       --tag1: #e07a5f; --tag2: #81b29a; --tag3: #f4a261; --tag4: #6b9ac4; --tag5: #c4a4d4;
+      user-select: none;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -51,7 +52,7 @@
     .stat-cell .lbl { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4; }
 
     .img-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
-    .img-ph { background: var(--surface2); border: 1px dashed var(--border); border-radius: 8px; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: var(--muted2); font-family: 'DM Mono', monospace; font-size: 0.7rem; text-align: center; padding: 1rem; }
+    .img-ph { background: var(--surface2); border: 1px dashed var(--border); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: var(--muted2); font-family: 'DM Mono', monospace; font-size: 0.7rem; text-align: center; padding: 1rem; }
     .img-ph .icon { font-size: 1.8rem; opacity: 0.25; }
     .blog-img { width: 100%; border-radius: 8px; object-fit: cover; display: block; }
     .img-caption { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted2); margin-top: 0.4rem; text-align: center; }
@@ -74,7 +75,7 @@
 
 <nav class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">Our Journey <span>//</span> Patau Syndrome</a>
+    <a href="index.html" class="nav-brand">Our Journey with Patau Syndrome</a>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="doctors-report.html" class="active">Doctor</a>
@@ -88,34 +89,27 @@
 
 <main class="page">
   <span class="post-tag">Part 01 — Doctor's Report</span>
-  <h1 class="post-title">What the doctor told us about Patau Syndrome</h1>
+  <h1 class="post-title">Context for Patau Syndrome and Trisomy 13</h1>
   <div class="post-meta">
     <span>Medical consultation</span>
-    <span>[Date of visit]</span>
-    <span>Written from the perspective of our physician</span>
+    <span>Written by our physician</span>
   </div>
 
   <div class="prose">
 
-    <blockquote>
-      <p>"I know this is a lot to take in. I want to walk you through everything we know about your baby's condition, what treatment looks like, and where research currently stands."</p>
-    </blockquote>
 
     <!-- IMAGES -->
     <div class="img-grid2">
       <div>
         <div class="img-ph">
-          <span class="icon">🔬</span>
-          <span>Replace with a Trisomy 13 karyotype image<br>Image 1 of 6</span>
-          <!-- <img src="images/karyotype.jpg" alt="Trisomy 13 karyotype" class="blog-img"> -->
+          
+          <img src="Images\Trisomy13.jpeg" alt="Trisomy 13 karyotype" class="blog-img">
         </div>
         <p class="img-caption">Karyotype showing extra chromosome 13</p>
       </div>
       <div>
         <div class="img-ph">
-          <span class="icon">📷</span>
-          <span>Replace with a prenatal ultrasound or medical illustration<br>Image 2 of 6</span>
-          <!-- <img src="images/ultrasound.jpg" alt="Prenatal ultrasound" class="blog-img"> -->
+          <img src="images/ultrasound.jpg" alt="Prenatal ultrasound" class="blog-img">
         </div>
         <p class="img-caption">Prenatal imaging</p>
       </div>
@@ -123,29 +117,30 @@
 
     <h2>What Is Patau Syndrome?</h2>
     <p>
-      Patau Syndrome — also called Trisomy 13 — is a chromosomal condition in which a person is born with three copies of chromosome 13 instead of the usual two. This extra genetic material interferes with normal fetal development, affecting nearly every organ system. It was first described by physician Klaus Patau in 1960.
+      Patau Syndrome is a condition where someone is born with three copies of chromosome 13 instead of two. The extra genes change normal development and affects most organ system. It was first discoveredby Klaus Patau in 1960.
+
     </p>
-    <div class="todo">Rewrite the above in your own words. Explain what happens biologically when an extra chromosome 13 is present, and when the condition is typically discovered (prenatal ultrasound, amniocentesis, or at birth).</div>
 
     <h2>Symptoms</h2>
     <p>Patau Syndrome presents with a wide range of physical findings, many visible at birth or during prenatal imaging. Common features include:</p>
     <ul>
       <li>Cleft lip and/or cleft palate</li>
       <li>Extra fingers or toes (polydactyly)</li>
-      <li>Congenital heart defects — present in up to 80% of cases</li>
-      <li>Brain malformations, including holoprosencephaly (the brain fails to divide into two hemispheres)</li>
+      <li>Congenital heart defects, present in up to 80% of cases</li>
+      <li>Brain malformations, including holoprosencephaly (brain fails to divide into two hemispheres)</li>
       <li>Small or absent eyes (microphthalmia or anophthalmia)</li>
       <li>Kidney and internal organ abnormalities</li>
       <li>Scalp skin defects (aplasia cutis)</li>
-      <li>Low birth weight and severe intellectual disability in those who survive infancy</li>
+      <li>Low birth weight</li>
+      <li>Facial/cranial deformities, small head (microcephaly), small eyes (microphthalmia), and sloping forehead</li>
+      <li>Severe intellectual disability, feeding difficulties, seizures, and low muscle tone (hypotonia)</li>
     </ul>
-    <div class="todo">Expand this list in your own words. For each symptom, briefly explain what it means medically. Remove anything you don't research and add anything this list is missing.</div>
 
     <h2>Statistics</h2>
 
     <div class="stat-grid">
       <div class="stat-cell">
-        <span class="num">1 in 10,000</span>
+        <span class="num">1 in 8,000-12,000</span>
         <span class="lbl">Live births affected</span>
       </div>
       <div class="stat-cell">
@@ -153,62 +148,58 @@
         <span class="lbl">Born with a heart defect</span>
       </div>
       <div class="stat-cell">
-        <span class="num">~91%</span>
+        <span class="num">~93%</span>
         <span class="lbl">Do not survive past 1 year</span>
-      </div>
-      <div class="stat-cell">
-        <span class="num">5–10%</span>
-        <span class="lbl">Survive beyond first year</span>
+      </div>      
+    </div>
+    
+    <div class="img-grid2">
+      <div>
+        <div class="img-ph">
+          
+          <img src="Images\outlook.png" alt="Trisomy 13 karyotype" class="blog-img">
+        </div>
+        <p class="img-caption">Trisomy 13 life expectancy graph</p>
       </div>
     </div>
-
-    <div class="todo">Verify ALL these numbers with your cited sources and rewrite the surrounding context in your own words. Who is most at risk? How does maternal age affect the odds? Are certain populations more affected?</div>
 
     <h2>Treatment Options</h2>
 
     <h3>Is there a cure?</h3>
     <p>
-      There is no cure for Patau Syndrome. Because the extra chromosome is present in every cell of the body, it cannot be surgically removed or medically corrected. Treatment is entirely focused on managing individual symptoms and improving quality of life.
+      There is no cure for Patau Syndrome. Because the extra chromosome is present in every cell of the body, it cannot be surgically removed, medically corrected, or genetically modified. Treatment is entirely focused on managing individual symptoms and improving quality of life, similar to other genetic disorders.
     </p>
 
     <h3>Surgical options</h3>
     <p>
-      Depending on which organs are affected, surgery may be recommended for cleft lip and palate repair, heart defect correction, polydactyly (extra digit removal), or intestinal malformations. However, surgical decisions are highly individualized and often depend on the overall severity of the condition.
+      Depending on which organs are affected, surgery may be recommended for cleft lip and palate repair, heart defect correction, polydactyly removal, or intestinal malformations. However, surgical decisions depend on the individual case and the overall severity of the condition.
     </p>
 
     <h3>Medical management</h3>
     <ul>
-      <li><strong>Anti-seizure medications</strong> — seizures are common; anticonvulsants help manage them</li>
-      <li><strong>Heart medications</strong> — depending on the cardiac defect present</li>
-      <li><strong>Feeding support</strong> — many infants require a nasogastric (NG) tube or a surgically placed gastrostomy tube (G-tube) due to feeding difficulties</li>
-      <li><strong>Respiratory support</strong> — supplemental oxygen or mechanical ventilation may be required</li>
+      <li><strong>Anti-seizure medications</strong>, seizures are common; treatment can help manage them but cannot remove them</li>
+      <li><strong>Heart medications</strong>, depending on the type of heart defect, if any</li>
+      <li><strong>Feeding support</strong>, many infants require a nasogastric (NG) tube or a surgically placed gastrostomy tube (G-tube) due to feeding difficulties/impossibilities</li>
+      <li><strong>Respiratory support</strong>, supplemental oxygen or mechanical ventilation may be required due to facial deformities</li>
     </ul>
 
-    <h3>Palliative and comfort care</h3>
-    <p>
-      Some families, in close discussion with their medical team, choose comfort-focused care — prioritizing the child's comfort and quality of life over aggressive interventions, particularly when malformations are very severe. This is a deeply personal decision and one our care team will fully support either way.
-    </p>
-
-    <div class="todo">Write each treatment option in your own words. Explain what each would mean for YOUR child specifically. Add any treatment details your research uncovered that are missing here.</div>
+    <p><strong>Important note:</strong> While the majority of infants with Patau Syndrome do not survive past their first year, there are documented cases of children living into their teens and even early adulthood. Survival depends on the severity of symptoms, access to medical care, and individual variability. Each case is unique.</p>
 
     <h2>Current Research &amp; Progress Toward a Cure</h2>
     <p>
-      As of now, no cure for Trisomy 13 exists. Researchers continue to improve surgical outcomes and neonatal intensive care protocols, which have extended survival times over recent decades. Some experimental research is exploring chromosomal silencing techniques — similar to approaches being studied for Trisomy 21 (Down Syndrome) — but these remain in early stages and are not yet clinical treatments.
+      As of now, no cure for Trisomy 13 exists. Researchers continue to improve surgical outcomes and neonatal intensive care protocols, which have extended survival times over recent decades. Some experimental research is exploring chromosomal silencing techniques, similar to approaches being studied for Trisomy 21 (Down Syndrome), but these remain in early stages and are not yet clinical treatments.
     </p>
-    <div class="todo">Research the latest studies on Trisomy 13. Search PubMed (pubmed.ncbi.nlm.nih.gov) for "Patau Syndrome" or "Trisomy 13 research." Mention specific research directions, organizations funding work, or any notable recent studies. Cite your source.</div>
 
     <h2>Assistive Technologies &amp; Products</h2>
-    <p>For children with Patau Syndrome who survive infancy, several technologies help support daily functioning:</p>
+    <p>For children with Patau Syndrome who survive infancy, several technologies can support daily functioning:</p>
     <ul>
-      <li><strong>AAC devices</strong> — Augmentative and Alternative Communication tools for nonverbal children (e.g., Tobii Dynavox, PRC Accent)</li>
-      <li><strong>Feeding equipment</strong> — Specialized bottles, NG tube kits, G-tube systems</li>
-      <li><strong>Hearing aids</strong> — for children with hearing loss</li>
-      <li><strong>Visual aids</strong> — corrective lenses, magnifiers, or low-vision tools</li>
-      <li><strong>Seizure monitoring</strong> — wearable alert devices (e.g., Empatica Embrace)</li>
-      <li><strong>Adaptive mobility</strong> — custom strollers, orthotics, or wheelchairs</li>
+      <li><strong>AAC devices</strong>, Augmentative and Alternative Communication tools for nonverbal children (e.g., Tobii Dynavox, PRC Accent)</li>
+      <li><strong>Feeding equipment</strong>, Specialized bottles, NG tube kits, G-tube systems</li>
+      <li><strong>Hearing aids</strong>, for children with hearing loss</li>
+      <li><strong>Visual aids</strong>, corrective lenses, magnifiers, or low-vision tools for vision loss/deformities</li>
+      <li><strong>Seizure monitoring</strong>, wearable alert devices to alert caregivers/people nearby (e.g., Empatica Embrace)</li>
+      <li><strong>Adaptive mobility</strong>, custom strollers, orthotics, or wheelchairs, as physical deformities may limit movement options</li>
     </ul>
-    <div class="todo">Research specific brands and products for each item above. Describe what each does and how it helps. Replace placeholder product names with verified ones.</div>
-
   </div>
 
   <div class="post-nav">
