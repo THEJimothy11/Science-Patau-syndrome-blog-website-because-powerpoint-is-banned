@@ -5,77 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Genetic Counselor's Report // Trisomy 13</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --bg: #0f0f0f; --surface: #181818; --surface2: #222; --border: #2e2e2e;
-      --text: #e8e4de; --muted: #777; --muted2: #444; --accent: #81b29a;
-      --tag1: #e07a5f; --tag2: #81b29a; --tag3: #f4a261; --tag4: #6b9ac4; --tag5: #c4a4d4;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Source Serif 4', Georgia, serif; line-height: 1.75; }
-
-    .site-nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
-    .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    .nav-brand { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); text-decoration: none; }
-    .nav-brand span { color: #e07a5f; }
-    .nav-links { display: flex; }
-    .nav-links a { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 0.9rem; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a.active { color: var(--text); border-bottom-color: var(--tag2); }
-
-    .page { max-width: 720px; margin: 0 auto; padding: 3.5rem 1.5rem 6rem; }
-
-    .post-tag { display: inline-block; font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-bottom: 1.2rem; background: rgba(129,178,154,0.12); color: var(--tag2); }
-    .post-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; line-height: 1.1; color: var(--text); margin-bottom: 1rem; }
-    .post-meta { font-family: 'DM Mono', monospace; font-size: 0.73rem; color: var(--muted2); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-    .post-meta span { margin-right: 1.2rem; }
-
-    .prose h2 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 3rem 0 1rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
-    .prose h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
-    .prose h3 { font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin: 1.8rem 0 0.7rem; }
-    .prose p { margin-bottom: 1.3rem; color: #ccc8c0; font-size: 1.02rem; }
-    .prose ul, .prose ol { margin: 0.5rem 0 1.4rem 1.3rem; color: #ccc8c0; font-size: 1.02rem; }
-    .prose li { margin-bottom: 0.5rem; }
-    .prose strong { color: var(--text); font-weight: 600; }
-
-    blockquote { border-left: 3px solid var(--tag2); padding: 0.8rem 1.2rem; margin: 2rem 0; background: var(--surface); border-radius: 0 6px 6px 0; }
-    blockquote p { color: #999 !important; font-style: italic; margin: 0 !important; }
-
-    .todo { background: #1a1600; border: 1px dashed #554400; border-radius: 6px; padding: 0.7rem 1rem; margin: 0.8rem 0 1.6rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: #aa8800; line-height: 1.5; }
-    .todo::before { content: "// TODO: "; opacity: 0.55; }
-
-    /* PUNNETT */
-    .punnett-wrap { margin: 2rem 0; overflow-x: auto; }
-    .punnett-note { font-family: 'DM Mono', monospace; font-size: 0.74rem; color: var(--muted); margin-bottom: 1rem; font-style: italic; line-height: 1.5; }
-    table.punnett { border-collapse: collapse; font-family: 'Syne', sans-serif; font-size: 0.88rem; width: 100%; }
-    table.punnett td, table.punnett th { border: 1px solid var(--border); padding: 0.9rem 1rem; text-align: center; min-width: 140px; }
-    table.punnett th { background: var(--surface2); color: var(--muted); font-size: 0.78rem; letter-spacing: 0.06em; font-weight: 600; }
-    table.punnett .ph { background: var(--surface2); font-style: italic; color: var(--muted); font-size: 0.8rem; }
-    table.punnett .normal { background: rgba(129,178,154,0.07); color: #81b29a; }
-    table.punnett .carrier { background: rgba(244,162,97,0.07); color: #f4a261; }
-    table.punnett .affected { background: rgba(224,122,95,0.08); color: #e07a5f; }
-
-    /* PEDIGREE */
-    .pedigree-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
-    .pedigree-note { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted2); text-align: center; margin-top: 1rem; line-height: 1.6; }
-
-    .img-ph { background: var(--surface2); border: 1px dashed var(--border); border-radius: 8px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: var(--muted2); font-family: 'DM Mono', monospace; font-size: 0.7rem; text-align: center; padding: 1rem; margin: 2rem 0; }
-    .img-ph .icon { font-size: 2rem; opacity: 0.2; }
-    .blog-img { width: 100%; border-radius: 8px; object-fit: cover; display: block; }
-
-    .post-nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
-    .post-nav a { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
-    .post-nav a:hover { color: var(--text); }
-    .post-nav .next { color: var(--tag2); }
-
-    .site-footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.74rem; color: var(--muted2); margin-top: 4rem; }
-    .site-footer a { color: var(--muted); text-decoration: none; }
-
-    @media (max-width: 600px) { .nav-links a { padding: 0 0.5rem; font-size: 0.65rem; } }
-  </style>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
-<body>
+<body class="page-genetics">
 
 <nav class="site-nav">
   <div class="nav-inner">
@@ -92,24 +24,22 @@
 </nav>
 
 <main class="page">
-  <span class="post-tag">Part 02 — Genetic Counselor's Report</span>
+  <span class="post-tag t2">Part 02 — Genetic Counselor's Report</span>
   <h1 class="post-title">Sitting with the genetic counselor: inheritance, probability, and our family's pedigree</h1>
   <div class="post-meta">
     <span>Genetic counseling session</span>
-    <span>[Date of session]</span>
-    <span>Written from the perspective of our genetic counselor</span>
+    <span>Written by our genetic counselor</span>
   </div>
 
   <div class="prose">
 
-    <blockquote>
-      <p>"I want to explain exactly how this condition came to be genetically — what the different forms mean, and what the inheritance pattern tells us about your family's future."</p>
-    </blockquote>
-
-    <div class="img-ph">
-      <span class="icon">🧬</span>
-      <span>Replace with a nondisjunction diagram or chromosome illustration — Image 3 of 6<br>
-      &lt;img src="images/nondisjunction.jpg" alt="Nondisjunction diagram" class="blog-img"&gt;</span>
+    <div class="img-grid2">
+      <div>
+        <div class="img-ph">
+          <img src="Images/nondisjunction.png" alt="Nondisjunction diagram" class="blog-img">
+        </div>
+        <p class="img-caption">Nondisjunction during meiosis</p>
+      </div>
     </div>
 
     <h2>What Type of Genetic Disorder Is This?</h2>
@@ -148,7 +78,6 @@
     <div class="todo">In your own words, explain what the recurrence statistics mean for your family. If your scenario involves translocation, explain what a "carrier parent" is. Describe what prenatal testing options (amniocentesis, NIPT, CVS) are available for a future pregnancy.</div>
 
     <h2>Punnett Square</h2>
-
     <div class="punnett-wrap">
       <p class="punnett-note">
         Note: A standard Punnett square does NOT apply to Full Trisomy 13, since it results from random nondisjunction — not predictable single-gene inheritance. The table below illustrates a simplified translocation carrier scenario only.
@@ -175,63 +104,47 @@
         </tbody>
       </table>
     </div>
-
     <div class="todo">Edit this Punnett square to accurately match YOUR specific scenario. Write an explanation paragraph below it describing what each cell means and what the probabilities are. If you focused on nondisjunction (the most common form), write a paragraph explaining why a Punnett square doesn't work for it.</div>
 
     <h2>Pedigree — Three Generations</h2>
-
     <div class="pedigree-wrap">
       <svg width="100%" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="Syne, sans-serif" font-size="11">
-        <!-- GEN I label -->
         <text x="10" y="50" fill="#555" font-style="italic" font-size="11">Generation I</text>
-        <!-- Paternal Grandfather -->
         <rect x="150" y="24" width="44" height="44" rx="3" fill="#1e2a3a" stroke="#6b9ac4" stroke-width="2"/>
         <text x="172" y="78" text-anchor="middle" fill="#666" font-size="10">Paternal</text>
         <text x="172" y="89" text-anchor="middle" fill="#666" font-size="10">Grandfather</text>
-        <!-- Paternal Grandmother -->
         <circle cx="284" cy="46" r="22" fill="#2a1e1e" stroke="#c4a4d4" stroke-width="2"/>
         <text x="284" y="78" text-anchor="middle" fill="#666" font-size="10">Paternal</text>
         <text x="284" y="89" text-anchor="middle" fill="#666" font-size="10">Grandmother</text>
-        <!-- Couple line -->
         <line x1="194" y1="46" x2="262" y2="46" stroke="#333" stroke-width="2"/>
         <line x1="228" y1="46" x2="228" y2="110" stroke="#333" stroke-width="2"/>
 
-        <!-- GEN II label -->
         <text x="10" y="138" fill="#555" font-style="italic" font-size="11">Generation II</text>
-        <!-- Father (carrier — dot inside square) -->
         <rect x="150" y="110" width="44" height="44" rx="3" fill="#1e2a3a" stroke="#6b9ac4" stroke-width="2"/>
         <circle cx="172" cy="132" r="10" fill="#6b9ac4" opacity="0.35"/>
         <text x="172" y="164" text-anchor="middle" fill="#666" font-size="10">Father</text>
         <text x="172" y="175" text-anchor="middle" fill="#6b9ac4" font-size="9">(carrier)</text>
-        <!-- Mother -->
         <circle cx="340" cy="132" r="22" fill="#2a1e1e" stroke="#c4a4d4" stroke-width="2"/>
         <text x="340" y="164" text-anchor="middle" fill="#666" font-size="10">Mother</text>
         <text x="340" y="175" text-anchor="middle" fill="#555" font-size="9">(unaffected)</text>
-        <!-- Couple line -->
         <line x1="194" y1="132" x2="318" y2="132" stroke="#333" stroke-width="2"/>
         <line x1="256" y1="132" x2="256" y2="196" stroke="#333" stroke-width="2"/>
 
-        <!-- GEN III label -->
         <text x="10" y="224" fill="#555" font-style="italic" font-size="11">Generation III</text>
-        <!-- Horizontal children line -->
         <line x1="100" y1="196" x2="430" y2="196" stroke="#333" stroke-width="1.5"/>
-        <!-- Sibling 1 (unaffected male) -->
         <line x1="100" y1="196" x2="100" y2="212" stroke="#333" stroke-width="1.5"/>
         <rect x="78" y="212" width="44" height="44" rx="3" fill="#1e2a3a" stroke="#6b9ac4" stroke-width="2"/>
         <text x="100" y="265" text-anchor="middle" fill="#666" font-size="10">Sibling 1</text>
         <text x="100" y="276" text-anchor="middle" fill="#555" font-size="9">(unaffected)</text>
-        <!-- Our child (AFFECTED — filled) -->
         <line x1="256" y1="196" x2="256" y2="212" stroke="#333" stroke-width="1.5"/>
         <rect x="234" y="212" width="44" height="44" rx="3" fill="#5a1e14" stroke="#e07a5f" stroke-width="2.5"/>
         <text x="256" y="265" text-anchor="middle" fill="#e07a5f" font-size="10" font-weight="700">Our Child</text>
         <text x="256" y="276" text-anchor="middle" fill="#e07a5f" font-size="9">(Trisomy 13)</text>
-        <!-- Sibling 2 (unaffected female) -->
         <line x1="430" y1="196" x2="430" y2="212" stroke="#333" stroke-width="1.5"/>
         <circle cx="430" cy="234" r="22" fill="#2a1e1e" stroke="#c4a4d4" stroke-width="2"/>
         <text x="430" y="265" text-anchor="middle" fill="#666" font-size="10">Sibling 2</text>
         <text x="430" y="276" text-anchor="middle" fill="#555" font-size="9">(unaffected)</text>
 
-        <!-- LEGEND -->
         <rect x="530" y="170" width="14" height="14" rx="2" fill="#1e2a3a" stroke="#6b9ac4" stroke-width="1.5"/>
         <text x="549" y="181" fill="#555" font-size="10">Male</text>
         <circle cx="537" cy="198" r="7" fill="#2a1e1e" stroke="#c4a4d4" stroke-width="1.5"/>
@@ -247,7 +160,6 @@
         Squares = male · Circles = female · Filled/red border = affected · Dot inside = carrier
       </p>
     </div>
-
     <div class="todo">Modify or recreate this pedigree to match YOUR specific family scenario. Write a paragraph below explaining what the pedigree shows: who is a carrier, who is affected, and how the disorder is passed through the three generations.</div>
 
   </div>
@@ -261,7 +173,7 @@
 <footer class="site-footer">
   Trisomy 13 // Patau Syndrome report &nbsp;&middot;&nbsp; Genetic Disorder Research Project<br>
   &copy; 2024 Jimothy Lyman and Landon Fenlason. All rights reserved. &nbsp;&middot;&nbsp; <a href="index.html">Home</a>
-</body>
+</footer>
 
 </body>
 </html>
