@@ -19,6 +19,7 @@
   --tag3: #f4a261;
   --tag4: #6b9ac4;
   --tag5: #c4a4d4;
+  user-select: none;
 }
 
 /* ── RESET ──────────────────────────────────────────────────── */
@@ -606,7 +607,8 @@ table.punnett .affected { background: rgba(224,122,95,0.08);  color: var(--tag1)
 }
 .citation:last-child { border-bottom: none; }
 .cite-num { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--muted2); line-height: 1; padding-top: 0.2rem; min-width: 28px; }
-.cite-body { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #888; line-height: 1.7; user-select: all; }
+.cite-body { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #888; line-height: 1.7; user-select: all;}
+.cite-indent {text-indent: -2em;}
 .cite-body .cite-type {
   display: inline-block;
   font-size: 0.65rem;
